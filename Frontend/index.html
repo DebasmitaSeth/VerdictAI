@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VerdictAI · AI Judgment Intelligence Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="app-body">
+
+<!-- ██████  SIDEBAR  ██████ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="10" fill="rgba(255,255,255,0.1)"/>
+        <line x1="20" y1="8" x2="20" y2="34" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="10" y1="14" x2="30" y2="14" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M10 14 C8.5 18 7 20 7 22 C7 23.7 8.3 25 10 25 C11.7 25 13 23.7 13 22 C13 20 11.5 18 10 14Z" fill="rgba(245,158,11,0.85)"/>
+        <path d="M30 14 C28.5 18 27 20 27 22 C27 23.7 28.3 25 30 25 C31.7 25 33 23.7 33 22 C33 20 31.5 18 30 14Z" fill="rgba(245,158,11,0.6)"/>
+        <path d="M16 34 L24 34" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="20" cy="14" r="2" fill="rgba(245,158,11,0.9)"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">VerdictAI</span>
+      <span class="brand-sub">AI Intelligence</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Main</div>
+    <a href="#" class="nav-item active" data-page="dashboard">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zm10 0a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+      <span>Dashboard</span>
+    </a>
+    <a href="#" class="nav-item" data-page="upload">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+      <span>Upload Judgment</span>
+    </a>
+
+    <div class="nav-section-label">Analysis</div>
+    <a href="#" class="nav-item" data-page="extraction">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+      <span>Extraction View</span>
+      <span class="nav-badge" id="extractionBadge">3</span>
+    </a>
+    <a href="#" class="nav-item" data-page="actionplan">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+      <span>Action Plans</span>
+    </a>
+
+    <div class="nav-section-label">Workflow</div>
+    <a href="#" class="nav-item" data-page="verification">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+      <span>Verification</span>
+      <span class="nav-badge urgent" id="verificationBadge">5</span>
+    </a>
+    <a href="#" class="nav-item" data-page="verified">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"/></svg>
+      <span>Verified Records</span>
+    </a>
+
+    <div class="nav-section-label">System</div>
+    <a href="#" class="nav-item" data-page="reports">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v6a1 1 0 102 0V8z" clip-rule="evenodd"/></svg>
+      <span>Reports</span>
+    </a>
+    <a href="#" class="nav-item" data-page="settings">
+      <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+      <span>Settings</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-card" onclick="openProfileModal()" title="View Profile" style="cursor:pointer">
+      <div class="user-av" id="sidebarAvatar">SP</div>
+      <div class="user-info-text">
+        <span class="user-nm" id="sidebarName">S. Patel</span>
+        <span class="user-rl" id="sidebarRole">Legal Officer</span>
+      </div>
+      <button class="logout-btn" onclick="event.stopPropagation(); handleLogout()" title="Sign Out">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+      </button>
+    </div>
+  </div>
+</aside>
+
+<!-- ██████  MOBILE TOPBAR  ██████ -->
+<div class="mobile-topbar">
+  <button class="hamburger" id="hamburger" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+  <div class="mobile-brand">VerdictAI <em>AI</em></div>
+  <div class="topbar-right">
+    <button class="topbar-icon-btn" onclick="toggleNotifications(event)" id="notifBtn" title="Notifications">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+      <span class="notif-pip" id="notifPip"></span>
+    </button>
+  </div>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- ██████  NOTIFICATION PANEL  ██████ -->
+<div class="notif-panel" id="notifPanel">
+  <div class="notif-panel-header">
+    <span class="notif-panel-title">Notifications</span>
+    <button class="notif-mark-all" onclick="markAllRead()">Mark all read</button>
+  </div>
+  <div class="notif-list" id="notifList"></div>
+  <div class="notif-panel-footer">
+    <button onclick="showPage('verification'); closeNotifPanel()">View All Pending Cases →</button>
+  </div>
+</div>
+<div class="notif-backdrop" id="notifBackdrop" onclick="closeNotifPanel()"></div>
+
+<!-- ██████  DESKTOP HEADER NOTIF BUTTON (visible on desktop in main)  ██████ -->
+<div class="desktop-notif-btn-wrap" id="desktopNotifWrap">
+  <button class="topbar-icon-btn desktop-notif" onclick="toggleNotifications(event)" title="Notifications">
+    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+    <span class="notif-pip" id="desktopNotifPip"></span>
+  </button>
+</div>
+
+<!-- ██████  MAIN CONTENT  ██████ -->
+<main class="main-content">
+
+  <!-- ═══════════════ PAGE: DASHBOARD ═══════════════ -->
+  <section class="page active" id="page-dashboard">
+    <div class="page-header">
+      <div>
+        <div class="page-breadcrumb">Centre for e-Governance · VerdictAI</div>
+        <h1 class="page-title">Intelligence Dashboard</h1>
+        <p class="page-subtitle">High Court Case Monitoring — Real-time AI Analysis</p>
+      </div>
+      <div class="header-actions">
+        <div class="live-clock" id="liveClock"></div>
+        <button class="topbar-icon-btn header-notif-btn" onclick="toggleNotifications(event)" title="Notifications">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+          <span class="notif-pip" id="headerNotifPip"></span>
+        </button>
+        <button class="btn btn-primary" onclick="showPage('upload')">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a.5.5 0 01.5.5v6h6a.5.5 0 010 1h-6v6a.5.5 0 01-1 0v-6h-6a.5.5 0 010-1h6v-6A.5.5 0 018 1z"/></svg>
+          Upload Judgment
+        </button>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card" data-color="blue">
+        <div class="stat-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/></svg></div>
+        <div class="stat-content">
+          <div class="stat-value" data-count="247">0</div>
+          <div class="stat-label">Total Cases</div>
+          <div class="stat-delta positive">↑ +12 this week</div>
+        </div>
+      </div>
+      <div class="stat-card" data-color="amber">
+        <div class="stat-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg></div>
+        <div class="stat-content">
+          <div class="stat-value" data-count="38">0</div>
+          <div class="stat-label">Pending Verification</div>
+          <div class="stat-delta urgent">⚠ 5 critical today</div>
+        </div>
+      </div>
+      <div class="stat-card" data-color="green">
+        <div class="stat-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></div>
+        <div class="stat-content">
+          <div class="stat-value" data-count="189">0</div>
+          <div class="stat-label">Verified &amp; Active</div>
+          <div class="stat-delta positive">↑ 76% compliance rate</div>
+        </div>
+      </div>
+      <div class="stat-card" data-color="red">
+        <div class="stat-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg></div>
+        <div class="stat-content">
+          <div class="stat-value" data-count="14">0</div>
+          <div class="stat-label">Approaching Deadline</div>
+          <div class="stat-delta negative">↓ Immediate action needed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="card cases-card">
+        <div class="card-header">
+          <h2 class="card-title">Recent Judgments</h2>
+          <div class="card-actions">
+            <select class="filter-select" id="deptFilter" onchange="filterCasesTable(this.value)">
+              <option value="">All Departments</option>
+              <option value="Revenue">Revenue</option>
+              <option value="PWD">PWD</option>
+              <option value="Finance">Finance</option>
+              <option value="Home">Home</option>
+              <option value="Urban">Urban Dev</option>
+            </select>
+            <button class="btn btn-outline" style="padding:6px 12px;font-size:.78rem" onclick="showPage('verified')">View All</button>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Case No.</th>
+                <th>Date</th>
+                <th>Department</th>
+                <th>Nature</th>
+                <th>Status</th>
+                <th>AI Score</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="casesTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="side-panels">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">⏰ Deadline Tracker</h2>
+            <span class="badge badge-red">14 urgent</span>
+          </div>
+          <div id="deadlineList"></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">Cases by Department</h2></div>
+          <div class="dept-bars" id="deptBars"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PAGE: UPLOAD ═══════════════ -->
+  <section class="page" id="page-upload">
+    <div class="page-header">
+      <div>
+        <div class="page-breadcrumb">VerdictAI · Upload</div>
+        <h1 class="page-title">Upload Court Judgment</h1>
+        <p class="page-subtitle">AI extraction pipeline begins immediately after upload</p>
+      </div>
+    </div>
+    <div class="upload-layout">
+      <div class="upload-main">
+        <div class="dropzone" id="dropzone" onclick="document.getElementById('fileInput').click()"
+          ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+          <div class="dropzone-inner">
+            <div class="dz-icon">
+              <svg viewBox="0 0 80 80" fill="none">
+                <rect x="10" y="6" width="44" height="60" rx="5" fill="#eef2ff" stroke="#1a3a5c" stroke-width="1.5"/>
+                <rect x="16" y="6" width="44" height="60" rx="5" fill="#f0f4ff" stroke="#1a3a5c" stroke-width="1.5"/>
+                <path d="M34 35V50M34 35L27 42M34 35L41 42" stroke="#1a3a5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M24 56h20" stroke="#1a3a5c" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+                <path d="M24 62h12" stroke="#1a3a5c" stroke-width="2" stroke-linecap="round" opacity="0.22"/>
+              </svg>
+            </div>
+            <h3 class="dz-title">Drop Judgment PDF Here</h3>
+            <p class="dz-sub">or click to browse &nbsp;·&nbsp; Supports multi-page, scanned &amp; digital PDFs</p>
+            <div class="btn btn-primary" style="margin:0 auto">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M2 12a1 1 0 011-1h10a1 1 0 110 2H3a1 1 0 01-1-1zM6.5 1a.5.5 0 01.5.5v5.793l1.646-1.647a.5.5 0 01.708.708l-2.5 2.5a.5.5 0 01-.708 0l-2.5-2.5a.5.5 0 01.708-.708L7 7.293V1.5a.5.5 0 01-.5-.5z"/></svg>
+              Choose PDF File
+            </div>
+            <input type="file" id="fileInput" accept=".pdf" hidden onchange="handleFileSelect(event)" />
+          </div>
+        </div>
+
+        <div class="upload-progress-card" id="uploadProgressCard" style="display:none">
+          <div class="upc-header">
+            <div class="upc-file-row">
+              <div class="upc-file-badge">PDF</div>
+              <div>
+                <div class="upc-file-name" id="uploadFileName">document.pdf</div>
+                <div class="upc-file-meta" id="uploadFileMeta">Processing...</div>
+              </div>
+            </div>
+            <button class="btn-icon" onclick="cancelUpload()">✕</button>
+          </div>
+          <div class="pipeline" id="aiPipeline">
+            <div class="p-step" id="step-upload"><div class="p-dot-wrap"><div class="p-dot"></div><div class="p-line"></div></div><div class="p-body"><div class="p-title">Uploading Document</div><div class="p-desc">Transferring to secure government processing server</div></div><div class="p-status" id="ss-upload"></div></div>
+            <div class="p-step" id="step-ocr"><div class="p-dot-wrap"><div class="p-dot"></div><div class="p-line"></div></div><div class="p-body"><div class="p-title">OCR &amp; Text Extraction</div><div class="p-desc">Converting scanned pages to searchable text via Tesseract</div></div><div class="p-status" id="ss-ocr"></div></div>
+            <div class="p-step" id="step-parse"><div class="p-dot-wrap"><div class="p-dot"></div><div class="p-line"></div></div><div class="p-body"><div class="p-title">Legal Structure Parsing</div><div class="p-desc">Identifying case entities, parties, orders &amp; directives</div></div><div class="p-status" id="ss-parse"></div></div>
+            <div class="p-step" id="step-ai"><div class="p-dot-wrap"><div class="p-dot"></div><div class="p-line"></div></div><div class="p-body"><div class="p-title">AI Action Plan Generation</div><div class="p-desc">Structuring compliance requirements, timelines &amp; responsibilities</div></div><div class="p-status" id="ss-ai"></div></div>
+            <div class="p-step" id="step-queue"><div class="p-dot-wrap"><div class="p-dot"></div></div><div class="p-body"><div class="p-title">Queued for Human Verification</div><div class="p-desc">Ready for legal officer review — zero data moves without approval</div></div><div class="p-status" id="ss-queue"></div></div>
+          </div>
+          <div id="uploadComplete" class="upload-complete" style="display:none">
+            <div class="uc-icon">✓</div>
+            <div class="uc-title">Processing Complete!</div>
+            <p class="uc-sub">Your document has been processed and is queued for human verification.</p>
+            <div class="uc-actions">
+              <button class="btn btn-outline" onclick="showPage('extraction')">View Extracted Data</button>
+              <button class="btn btn-primary" onclick="showPage('verification')">Go to Verification Queue →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="upload-sidebar">
+        <div class="card guide-card">
+          <h3 class="guide-title">Supported Formats</h3>
+          <ul class="guide-list">
+            <li class="guide-item green"><span class="guide-dot"></span>Digital PDFs (text-selectable)</li>
+            <li class="guide-item green"><span class="guide-dot"></span>Scanned PDFs (OCR applied)</li>
+            <li class="guide-item green"><span class="guide-dot"></span>Multi-page documents (up to 200 pages)</li>
+            <li class="guide-item green"><span class="guide-dot"></span>Auto-fetched via High Court CIS API</li>
+            <li class="guide-item red"><span class="guide-dot"></span>Password-protected PDFs</li>
+          </ul>
+        </div>
+        <div class="card guide-card">
+          <h3 class="guide-title">What AI Extracts</h3>
+          <ul class="guide-list">
+            <li class="guide-item blue"><span class="guide-dot"></span>Case number, court &amp; bench details</li>
+            <li class="guide-item blue"><span class="guide-dot"></span>Petitioner &amp; Respondent parties</li>
+            <li class="guide-item blue"><span class="guide-dot"></span>Date of order &amp; disposal</li>
+            <li class="guide-item blue"><span class="guide-dot"></span>Key directives &amp; compliance orders</li>
+            <li class="guide-item blue"><span class="guide-dot"></span>Limitation &amp; appeal periods</li>
+            <li class="guide-item blue"><span class="guide-dot"></span>Responsible department(s)</li>
+            <li class="guide-item blue"><span class="guide-dot"></span>Comply vs Appeal AI recommendation</li>
+          </ul>
+        </div>
+        <div class="card guide-card" style="position:relative;overflow:visible">
+          <div class="api-live-badge">LIVE API</div>
+          <h3 class="guide-title">High Court CIS Integration</h3>
+          <p class="guide-desc">Judgments are automatically fetched from the High Court's Court Information System once a case is disposed of — no manual upload needed.</p>
+          <div class="api-status-row">
+            <span class="dot-online"></span>
+            <span>API Connected &nbsp;·&nbsp; Last sync <strong>4 min ago</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PAGE: EXTRACTION ═══════════════ -->
+  <section class="page" id="page-extraction">
+    <div class="page-header">
+      <div>
+        <div class="page-breadcrumb">VerdictAI · Analysis</div>
+        <h1 class="page-title">Extracted Information</h1>
+        <p class="page-subtitle">AI-parsed judgment data with source highlights and confidence scores</p>
+      </div>
+      <div class="header-actions">
+        <select class="case-selector" id="caseSelector" onchange="loadCaseExtraction(this.value)">
+          <option value="0">WP/14832/2024 — Sharma vs State of Karnataka</option>
+          <option value="1">SLP/8901/2024 — Patel Industries vs Revenue Dept</option>
+          <option value="2">WP/22107/2023 — Municipal Corp Contempt Matter</option>
+        </select>
+      </div>
+    </div>
+    <div class="extraction-layout">
+      <div class="pdf-panel card">
+        <div class="pdf-panel-header">
+          <h3>Document Preview</h3>
+          <div class="pdf-controls">
+            <button class="btn-icon" onclick="zoomPDF(1)" title="Zoom In">+</button>
+            <button class="btn-icon" onclick="zoomPDF(-1)" title="Zoom Out">−</button>
+            <span class="pdf-pg-lbl" id="pdfPageLabel">Page 1 of 4</span>
+          </div>
+        </div>
+        <div class="pdf-viewer" id="pdfViewer"></div>
+      </div>
+      <div class="extraction-fields" id="extractionFields"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PAGE: ACTION PLAN ═══════════════ -->
+  <section class="page" id="page-actionplan">
+    <div class="page-header">
+      <div>
+        <div class="page-breadcrumb">VerdictAI · Analysis</div>
+        <h1 class="page-title">AI Action Plan</h1>
+        <p class="page-subtitle">Structured compliance roadmap generated from judgment analysis</p>
+      </div>
+      <div class="header-actions">
+        <select class="case-selector" id="apCaseSelector" onchange="loadActionPlanForCase(this.value)">
+          <option value="0">WP/14832/2024 — Sharma vs State</option>
+          <option value="1">SLP/8901/2024 — Patel Industries vs Revenue</option>
+          <option value="2">WP/22107/2023 — Municipal Corp</option>
+        </select>
+        <button class="btn btn-outline" onclick="exportReport()">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 01.5.5v2.5a1 1 0 001 1h12a1 1 0 001-1v-2.5a.5.5 0 011 0v2.5a2 2 0 01-2 2H2a2 2 0 01-2-2v-2.5a.5.5 0 01.5-.5z"/><path d="M7.646 11.854a.5.5 0 00.708 0l3-3a.5.5 0 00-.708-.708L8.5 10.293V1.5a.5.5 0 00-1 0v8.793L5.354 8.146a.5.5 0 10-.708.708l3 3z"/></svg>
+          Export Report
+        </button>
+        <button class="btn btn-primary" onclick="showPage('verification')">Send for Verification →</button>
+      </div>
+    </div>
+    <div id="actionplanContent"></div>
+  </section>
+
+  <!-- ═══════════════ PAGE: VERIFICATION ═══════════════ -->
+  <section class="page" id="page-verification">
+    <div class="page-header">
+      <div>
+        <div class="page-breadcrumb">VerdictAI · Workflow</div>
+        <h1 class="page-title">Human Verification Queue</h1>
+        <p class="page-subtitle">AI extractions must be human-verified before entering trusted records</p>
+      </div>
+      <div class="header-actions">
+        <div class="queue-pill"><span>Pending:</span><strong id="qcPending">5</strong></div>
+        <div class="queue-pill approved"><span>Approved:</span><strong id="qcApproved">0</strong></div>
+      </div>
+    </div>
+    <div class="verification-layout">
+      <div class="ver-queue card" id="verificationQueue">
+        <div class="ver-queue-head">
+          <span>PENDING REVIEW</span>
+          <span id="queueCount">5 items</span>
+        </div>
+      </div>
+      <div class="review-panel card" id="reviewPanel">
+        <div class="review-placeholder-wrap">
+          <div class="review-ph-icon">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#cbd5e1" stroke-width="2"/><path d="M22 32l6 6 14-14" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>Select a pending case from the queue to begin verification</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PAGE: VERIFIED RECORDS ═══════════════ -->
+  <section class="page" id="page-verified">
+    <div class="page-header">
+      <div>
+        <div class="page-breadcrumb">VerdictAI · Records</div>
+        <h1 class="page-title">Verified Action Plans</h1>
+        <p class="page-subtitle">Human-approved records — trusted view for decision-makers only</p>
+      </div>
+      <div class="header-actions">
+        <div class="search-wrap">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M11.742 10.344a6.5 6.5 0 10-1.397 1.398c.03.04.062.078.098.115l3.85 3.85a1 1 0 001.415-1.414l-3.85-3.85a1.007 1.007 0 00-.115-.099zM12 6.5a5.5 5.5 0 11-11 0 5.5 5.5 0 0111 0z"/></svg>
+          <input type="text" placeholder="Search cases, departments..." id="searchVerified" oninput="filterVerifiedRecords(this.value)" />
+        </div>
+      </div>
+    </div>
+    <div class="filter-tabs-wrap">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all" onclick="setVerifiedFilter(this,'all')">All Records</button>
+        <button class="filter-tab" data-filter="compliance" onclick="setVerifiedFilter(this,'compliance')">Compliance</button>
+        <button class="filter-tab" data-filter="appeal" onclick="setVerifiedFilter(this,'appeal')">Consider Appeal</button>
+        <button class="filter-tab" data-filter="critical" onclick="setVerifiedFilter(this,'critical')">Critical Deadline</button>
+      </div>
+    </div>
+    <div class="verified-grid" id="verifiedGrid"></div>
+  </section>
+
+  <!-- ═══════════════ PAGE: REPORTS ═══════════════ -->
+  <section class="page" id="page-reports">
+    <div class="page-header">
+      <div>
+        <div class="page-breadcrumb">VerdictAI · System</div>
+        <h1 class="page-title">Reports &amp; Analytics</h1>
+        <p class="page-subtitle">Department-level case performance and compliance overview</p>
+      </div>
+      <div class="header-actions">
+        <select class="filter-select" id="reportPeriod" onchange="initReports()">
+          <option value="30">Last 30 Days</option>
+          <option value="90" selected>Last 90 Days</option>
+          <option value="180">Last 6 Months</option>
+          <option value="365">Last Year</option>
+        </select>
+        <button class="btn btn-outline" onclick="exportReport()">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 01.5.5v2.5a1 1 0 001 1h12a1 1 0 001-1v-2.5a.5.5 0 011 0v2.5a2 2 0 01-2 2H2a2 2 0 01-2-2v-2.5a.5.5 0 01.5-.5z"/><path d="M7.646 11.854a.5.5 0 00.708 0l3-3a.5.5 0 00-.708-.708L8.5 10.293V1.5a.5.5 0 00-1 0v8.793L5.354 8.146a.5.5 0 10-.708.708l3 3z"/></svg>
+          Export PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="stats-grid" id="reportStatsGrid"></div>
+
+    <!-- Reports Main Grid -->
+    <div class="reports-grid">
+      <!-- Monthly Trend -->
+      <div class="card report-card-wide">
+        <div class="card-header">
+          <h2 class="card-title">Monthly Case Trend</h2>
+          <div class="chart-legend">
+            <span class="chart-leg-item"><span class="chart-leg-dot" style="background:var(--navy-500)"></span>Received</span>
+            <span class="chart-leg-item"><span class="chart-leg-dot" style="background:var(--green-500)"></span>Verified</span>
+            <span class="chart-leg-item"><span class="chart-leg-dot" style="background:var(--gold-500)"></span>Pending</span>
+          </div>
+        </div>
+        <div class="bar-chart-wrap" id="monthlyChart"></div>
+      </div>
+
+      <!-- Compliance Rate Donut -->
+      <div class="card">
+        <div class="card-header"><h2 class="card-title">Outcome Distribution</h2></div>
+        <div class="donut-wrap" id="outcomeDonut"></div>
+      </div>
+
+      <!-- Department Performance Table -->
+      <div class="card report-card-wide">
+        <div class="card-header">
+          <h2 class="card-title">Department Performance</h2>
+          <span class="badge badge-blue">6 departments</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="deptPerfTable">
+            <thead>
+              <tr>
+                <th>Department</th>
+                <th>Total Cases</th>
+                <th>Verified</th>
+                <th>Pending</th>
+                <th>Compliance Rate</th>
+                <th>Avg. Resolution</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="deptPerfBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Top Actions Required -->
+      <div class="card">
+        <div class="card-header"><h2 class="card-title">Actions Required</h2><span class="badge badge-red">14 urgent</span></div>
+        <div id="actionsRequired"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PAGE: SETTINGS ═══════════════ -->
+  <section class="page" id="page-settings">
+    <div class="page-header">
+      <div>
+        <div class="page-breadcrumb">VerdictAI · System</div>
+        <h1 class="page-title">Settings</h1>
+        <p class="page-subtitle">Manage your account, preferences, and system configuration</p>
+      </div>
+    </div>
+
+    <div class="settings-layout">
+      <!-- Settings Sidebar -->
+      <div class="settings-nav card">
+        <button class="settings-nav-item active" data-tab="profile" onclick="switchSettingsTab(this,'profile')">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+          Profile &amp; Account
+        </button>
+        <button class="settings-nav-item" data-tab="notifications" onclick="switchSettingsTab(this,'notifications')">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+          Notifications
+        </button>
+        <button class="settings-nav-item" data-tab="preferences" onclick="switchSettingsTab(this,'preferences')">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+          Display Preferences
+        </button>
+        <button class="settings-nav-item" data-tab="security" onclick="switchSettingsTab(this,'security')">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Security
+        </button>
+        <button class="settings-nav-item" data-tab="api" onclick="switchSettingsTab(this,'api')">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          API &amp; Integrations
+        </button>
+      </div>
+
+      <!-- Settings Content -->
+      <div class="settings-content">
+
+        <!-- Profile Tab -->
+        <div class="settings-tab active" id="stab-profile">
+          <div class="card settings-card">
+            <div class="card-header"><h2 class="card-title">Profile Information</h2></div>
+            <div class="settings-card-body">
+              <div class="profile-avatar-section">
+                <div class="profile-avatar-big" id="settingsAvatar">SP</div>
+                <div>
+                  <div class="profile-av-name" id="settingsName">S. Patel</div>
+                  <div class="profile-av-role" id="settingsRole">Legal Officer · Revenue Department</div>
+                  <button class="btn btn-outline" style="margin-top:8px;font-size:.78rem;padding:5px 12px" onclick="openChangePhotoModal()">Change Photo</button>
+                </div>
+              </div>
+              <div class="settings-form-grid">
+                <div class="sform-group">
+                  <label>First Name</label>
+                  <input type="text" class="sform-input" id="sfFirstName" value="S." />
+                </div>
+                <div class="sform-group">
+                  <label>Last Name</label>
+                  <input type="text" class="sform-input" id="sfLastName" value="Patel" />
+                </div>
+                <div class="sform-group">
+                  <label>Official Email</label>
+                  <input type="email" class="sform-input" id="sfEmail" value="spatel@revenue.gov.in" />
+                </div>
+                <div class="sform-group">
+                  <label>Employee ID</label>
+                  <input type="text" class="sform-input" id="sfEmpId" value="EMP-290145" readonly style="background:var(--slate-50)" />
+                </div>
+                <div class="sform-group">
+                  <label>Department</label>
+                  <select class="sform-input">
+                    <option selected>Revenue Department</option>
+                    <option>Finance Department</option>
+                    <option>Home Department</option>
+                    <option>PWD</option>
+                  </select>
+                </div>
+                <div class="sform-group">
+                  <label>Designation</label>
+                  <select class="sform-input">
+                    <option selected>Legal Officer</option>
+                    <option>Nodal Officer (Litigation)</option>
+                    <option>Government Pleader</option>
+                    <option>Deputy Commissioner</option>
+                  </select>
+                </div>
+                <div class="sform-group" style="grid-column:1/-1">
+                  <label>Office Address</label>
+                  <textarea class="sform-input" rows="2">Revenue Department, Vidhana Soudha, Bengaluru - 560001</textarea>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button class="btn btn-outline">Cancel</button>
+                <button class="btn btn-primary" onclick="saveProfileSettings()">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications Tab -->
+        <div class="settings-tab" id="stab-notifications">
+          <div class="card settings-card">
+            <div class="card-header"><h2 class="card-title">Notification Preferences</h2></div>
+            <div class="settings-card-body">
+              <div class="notif-pref-section">
+                <div class="notif-pref-title">Email Notifications</div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>Deadline Reminders</strong><br/><small>Get email when a case deadline is within 7 days</small></span><label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-track"></span></label></div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>Verification Required</strong><br/><small>Alert when new cases are queued for your review</small></span><label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-track"></span></label></div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>Case Status Updates</strong><br/><small>Notify on every case status change</small></span><label class="toggle-switch"><input type="checkbox" /><span class="toggle-track"></span></label></div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>Weekly Digest</strong><br/><small>Sunday summary of all pending and upcoming actions</small></span><label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-track"></span></label></div>
+              </div>
+              <div class="notif-pref-section">
+                <div class="notif-pref-title">In-App Notifications</div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>Real-time Alerts</strong><br/><small>Show popup notifications in the app</small></span><label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-track"></span></label></div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>Critical Deadline Alert</strong><br/><small>Banner alert for cases within 3 days of deadline</small></span><label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-track"></span></label></div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>API Sync Notifications</strong><br/><small>Alert when CIS API fetches new judgments</small></span><label class="toggle-switch"><input type="checkbox" /><span class="toggle-track"></span></label></div>
+              </div>
+              <div class="settings-actions">
+                <button class="btn btn-primary" onclick="showToast('Notification preferences saved','success')">Save Preferences</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preferences Tab -->
+        <div class="settings-tab" id="stab-preferences">
+          <div class="card settings-card">
+            <div class="card-header"><h2 class="card-title">Display Preferences</h2></div>
+            <div class="settings-card-body">
+              <div class="sform-group">
+                <label>Default Dashboard View</label>
+                <select class="sform-input">
+                  <option selected>All Departments</option>
+                  <option>My Department Only</option>
+                  <option>Critical Cases First</option>
+                </select>
+              </div>
+              <div class="sform-group">
+                <label>Date Format</label>
+                <select class="sform-input">
+                  <option selected>DD MMM YYYY (15 Mar 2024)</option>
+                  <option>DD/MM/YYYY</option>
+                  <option>YYYY-MM-DD</option>
+                </select>
+              </div>
+              <div class="sform-group">
+                <label>Language</label>
+                <select class="sform-input">
+                  <option selected>English</option>
+                  <option>Hindi — हिंदी</option>
+                  <option>Kannada — ಕನ್ನಡ</option>
+                </select>
+              </div>
+              <div class="sform-group">
+                <label>Rows Per Page (Tables)</label>
+                <select class="sform-input">
+                  <option>10</option>
+                  <option selected>25</option>
+                  <option>50</option>
+                  <option>100</option>
+                </select>
+              </div>
+              <div class="notif-pref-section" style="margin-top:20px">
+                <div class="notif-pref-title">Accessibility</div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>High Contrast Mode</strong><br/><small>Increase contrast for better readability</small></span><label class="toggle-switch"><input type="checkbox" onchange="toggleHighContrast(this.checked)" /><span class="toggle-track"></span></label></div>
+                <div class="toggle-row"><span class="toggle-lbl"><strong>Compact Sidebar</strong><br/><small>Collapse sidebar to icon-only view</small></span><label class="toggle-switch"><input type="checkbox" onchange="toggleCompactSidebar(this.checked)" /><span class="toggle-track"></span></label></div>
+              </div>
+              <div class="settings-actions">
+                <button class="btn btn-primary" onclick="showToast('Display preferences saved','success')">Save Preferences</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Tab -->
+        <div class="settings-tab" id="stab-security">
+          <div class="card settings-card">
+            <div class="card-header"><h2 class="card-title">Security Settings</h2></div>
+            <div class="settings-card-body">
+              <div class="security-item">
+                <div class="security-item-info">
+                  <div class="security-item-title">Change Password</div>
+                  <div class="security-item-desc">Last changed 45 days ago</div>
+                </div>
+                <button class="btn btn-outline" onclick="openChangePwdModal()">Change Password</button>
+              </div>
+              <div class="security-item">
+                <div class="security-item-info">
+                  <div class="security-item-title">Two-Factor Authentication</div>
+                  <div class="security-item-desc">Add an extra layer of security to your account</div>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-track"></span></label>
+              </div>
+              <div class="security-item">
+                <div class="security-item-info">
+                  <div class="security-item-title">Active Sessions</div>
+                  <div class="security-item-desc">2 active sessions — this device + mobile</div>
+                </div>
+                <button class="btn btn-danger" onclick="showToast('All other sessions signed out','success')">Revoke Others</button>
+              </div>
+              <div class="security-item">
+                <div class="security-item-info">
+                  <div class="security-item-title">Login History</div>
+                  <div class="security-item-desc">View recent sign-in activity</div>
+                </div>
+                <button class="btn btn-outline" onclick="openLoginHistoryModal()">View History</button>
+              </div>
+              <div class="security-item">
+                <div class="security-item-info">
+                  <div class="security-item-title">NIC Security Framework</div>
+                  <div class="security-item-desc">All data encrypted with AES-256</div>
+                </div>
+                <span class="badge badge-green">Protected</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- API Tab -->
+        <div class="settings-tab" id="stab-api">
+          <div class="card settings-card">
+            <div class="card-header"><h2 class="card-title">API &amp; Integrations</h2></div>
+            <div class="settings-card-body">
+              <div class="api-integration-item active">
+                <div class="api-int-icon">HC</div>
+                <div class="api-int-info">
+                  <div class="api-int-name">High Court CIS API</div>
+                  <div class="api-int-desc">Auto-fetches judgment PDFs when cases are disposed in High Court</div>
+                  <div class="api-int-meta"><span class="dot-online" style="width:6px;height:6px"></span> Connected · Last sync: 4 mins ago · 247 cases fetched</div>
+                </div>
+                <button class="btn btn-outline" style="font-size:.78rem;padding:5px 12px" onclick="showToast('CIS API sync triggered','success')">Sync Now</button>
+              </div>
+              <div class="api-integration-item">
+                <div class="api-int-icon" style="background:var(--slate-100);color:var(--slate-500)">SC</div>
+                <div class="api-int-info">
+                  <div class="api-int-name">Supreme Court Portal API</div>
+                  <div class="api-int-desc">Fetch SLP orders and Supreme Court judgments</div>
+                  <div class="api-int-meta" style="color:var(--slate-400)">Not connected</div>
+                </div>
+                <button class="btn btn-primary" style="font-size:.78rem;padding:5px 12px" onclick="openApiConnectModal('sc')">Connect</button>
+              </div>
+              <div class="api-integration-item">
+                <div class="api-int-icon" style="background:var(--green-100);color:var(--green-700)">DL</div>
+                <div class="api-int-info">
+                  <div class="api-int-name">DigiLocker Integration</div>
+                  <div class="api-int-desc">Store verified action plans in official DigiLocker vaults</div>
+                  <div class="api-int-meta" style="color:var(--slate-400)">Not connected</div>
+                </div>
+                <button class="btn btn-primary" style="font-size:.78rem;padding:5px 12px" onclick="openApiConnectModal('digilocker')">Connect</button>
+              </div>
+              <div class="sform-group" style="margin-top:20px">
+                <label>API Key (for external systems)</label>
+                <div style="display:flex;gap:8px">
+                  <input type="password" class="sform-input" value="ccms_prod_xxxxxxxxxxxxxxxxxxx" id="apiKeyField" style="flex:1" readonly />
+                  <button class="btn btn-outline" style="flex-shrink:0" onclick="toggleApiKey()">Show</button>
+                  <button class="btn btn-outline" style="flex-shrink:0" onclick="showToast('API key copied to clipboard','success')">Copy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ██████  MODALS  ██████ -->
+
+<!-- Edit Field Modal -->
+<div class="modal-overlay" id="editModal" style="display:none" onclick="closeModalOvl(event,'editModal')">
+  <div class="modal">
+    <div class="modal-header"><h3>Edit Extracted Field</h3><button class="btn-icon" onclick="closeModal('editModal')">✕</button></div>
+    <div class="modal-body">
+      <div class="mform-group"><label>Field</label><input type="text" id="editFieldName" class="mform-input" readonly /></div>
+      <div class="mform-group"><label>Corrected Value</label><textarea id="editFieldValue" class="mform-input" rows="4"></textarea></div>
+      <div class="mform-group"><label>Reason for Edit (optional)</label><input type="text" id="editReason" class="mform-input" placeholder="e.g. Date corrected from OCR error" /></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('editModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveFieldEdit()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Case Detail Modal -->
+<div class="modal-overlay" id="caseDetailModal" style="display:none" onclick="closeModalOvl(event,'caseDetailModal')">
+  <div class="modal" style="max-width:600px">
+    <div class="modal-header"><h3 id="caseDetailTitle">Case Details</h3><button class="btn-icon" onclick="closeModal('caseDetailModal')">✕</button></div>
+    <div class="modal-body" id="caseDetailBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('caseDetailModal')">Close</button>
+      <button class="btn btn-primary" onclick="goToVerification()">Go to Verification →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Profile Modal -->
+<div class="modal-overlay" id="profileModal" style="display:none" onclick="closeModalOvl(event,'profileModal')">
+  <div class="modal" style="max-width:480px">
+    <div class="modal-header"><h3>My Profile</h3><button class="btn-icon" onclick="closeModal('profileModal')">✕</button></div>
+    <div class="modal-body">
+      <div class="profile-modal-top">
+        <div class="profile-modal-av" id="profileModalAv">SP</div>
+        <div>
+          <div class="profile-modal-name" id="profileModalName">S. Patel</div>
+          <div class="profile-modal-role" id="profileModalRole">Legal Officer</div>
+          <div class="profile-modal-email" id="profileModalEmail">spatel@gov.in</div>
+        </div>
+      </div>
+      <div class="profile-modal-stats">
+        <div class="pm-stat"><div class="pm-stat-val">23</div><div class="pm-stat-lbl">Cases Reviewed</div></div>
+        <div class="pm-stat"><div class="pm-stat-val">18</div><div class="pm-stat-lbl">Approved</div></div>
+        <div class="pm-stat"><div class="pm-stat-val">3</div><div class="pm-stat-lbl">Rejected</div></div>
+        <div class="pm-stat"><div class="pm-stat-val">96%</div><div class="pm-stat-lbl">Accuracy</div></div>
+      </div>
+      <div class="profile-modal-activity">
+        <div class="pm-activity-title">Recent Activity</div>
+        <div id="pmActivityList"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('profileModal'); showPage('settings')">Edit Profile</button>
+      <button class="btn btn-danger" onclick="closeModal('profileModal'); handleLogout()">Sign Out</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ██████  CHANGE PASSWORD MODAL  ██████ -->
+<div class="modal-overlay" id="changePwdModal" style="display:none" onclick="closeModalOvl(event,'changePwdModal')">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:32px;height:32px;background:var(--navy-100);border-radius:8px;display:flex;align-items:center;justify-content:center">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="var(--navy-700)"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+        </div>
+        <h3>Change Password</h3>
+      </div>
+      <button class="btn-icon" onclick="closeModal('changePwdModal')">✕</button>
+    </div>
+    <div class="modal-body" style="gap:16px">
+      <div class="mform-group">
+        <label>Current Password</label>
+        <div style="position:relative">
+          <input type="password" id="cpOldPwd" class="mform-input" placeholder="Enter your current password" style="padding-right:44px" />
+          <button type="button" class="toggle-pwd" style="position:absolute;right:10px;top:50%;transform:translateY(-50%)" onclick="togglePwdById('cpOldPwd',this)">
+            <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+        <div class="form-error" id="cpOldErr"></div>
+      </div>
+      <div class="mform-group">
+        <label>New Password</label>
+        <div style="position:relative">
+          <input type="password" id="cpNewPwd" class="mform-input" placeholder="Minimum 8 characters" style="padding-right:44px" oninput="checkNewPwdStrength(this.value)" />
+          <button type="button" class="toggle-pwd" style="position:absolute;right:10px;top:50%;transform:translateY(-50%)" onclick="togglePwdById('cpNewPwd',this)">
+            <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+        <div id="cpStrengthWrap" style="display:none;margin-top:6px">
+          <div style="display:flex;gap:4px;margin-bottom:4px">
+            <div class="pwd-bar" id="cpb1"></div>
+            <div class="pwd-bar" id="cpb2"></div>
+            <div class="pwd-bar" id="cpb3"></div>
+            <div class="pwd-bar" id="cpb4"></div>
+          </div>
+          <span id="cpStrengthLabel" style="font-size:.72rem;font-weight:700;color:var(--slate-500)"></span>
+        </div>
+        <div class="form-error" id="cpNewErr"></div>
+      </div>
+      <div class="mform-group">
+        <label>Confirm New Password</label>
+        <div style="position:relative">
+          <input type="password" id="cpConfirmPwd" class="mform-input" placeholder="Re-enter new password" style="padding-right:44px" />
+          <button type="button" class="toggle-pwd" style="position:absolute;right:10px;top:50%;transform:translateY(-50%)" onclick="togglePwdById('cpConfirmPwd',this)">
+            <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+        <div class="form-error" id="cpConfirmErr"></div>
+      </div>
+      <div class="pwd-requirements">
+        <div class="pwd-req-title">Password must contain:</div>
+        <div class="pwd-req-list" id="cpReqList">
+          <div class="pwd-req-item" id="req-len"><span class="req-dot"></span> At least 8 characters</div>
+          <div class="pwd-req-item" id="req-upper"><span class="req-dot"></span> At least one uppercase letter (A–Z)</div>
+          <div class="pwd-req-item" id="req-num"><span class="req-dot"></span> At least one number (0–9)</div>
+          <div class="pwd-req-item" id="req-special"><span class="req-dot"></span> At least one special character (!@#$...)</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('changePwdModal')">Cancel</button>
+      <button class="btn btn-primary" id="changePwdBtn" onclick="submitChangePassword()">
+        <span class="btn-text">Update Password</span>
+        <span class="btn-loader" style="display:none">
+          <svg class="spinner" viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          Updating...
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ██████  LOGIN HISTORY MODAL  ██████ -->
+<div class="modal-overlay" id="loginHistoryModal" style="display:none" onclick="closeModalOvl(event,'loginHistoryModal')">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:32px;height:32px;background:var(--navy-100);border-radius:8px;display:flex;align-items:center;justify-content:center">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="var(--navy-700)"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+        </div>
+        <h3>Login History</h3>
+      </div>
+      <button class="btn-icon" onclick="closeModal('loginHistoryModal')">✕</button>
+    </div>
+    <div class="modal-body" style="padding:0;gap:0">
+      <!-- Active Sessions Banner -->
+      <div class="lh-sessions-banner">
+        <div class="lh-sessions-title">
+          <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px;color:var(--navy-600)"><path d="M8 1a.5.5 0 01.5.5v6h6a.5.5 0 010 1h-6v6a.5.5 0 01-1 0v-6h-6a.5.5 0 010-1h6v-6A.5.5 0 018 1z"/></svg>
+          Active Sessions (2)
+        </div>
+        <button class="btn btn-danger" style="font-size:.76rem;padding:5px 12px" onclick="revokeAllSessions()">Revoke All Other Sessions</button>
+      </div>
+      <div class="lh-active-sessions">
+        <div class="lh-session-item current">
+          <div class="lh-session-icon">💻</div>
+          <div class="lh-session-info">
+            <div class="lh-session-device">Windows 11 · Chrome 124 <span class="lh-current-badge">Current</span></div>
+            <div class="lh-session-meta">Bengaluru, Karnataka · 192.168.1.x · Active now</div>
+          </div>
+        </div>
+        <div class="lh-session-item">
+          <div class="lh-session-icon">📱</div>
+          <div class="lh-session-info">
+            <div class="lh-session-device">Android 14 · Chrome Mobile</div>
+            <div class="lh-session-meta">Bengaluru, Karnataka · Last active 2h ago</div>
+          </div>
+          <button class="lh-revoke-btn" onclick="revokeSession(this)">Revoke</button>
+        </div>
+      </div>
+      <!-- History List -->
+      <div class="lh-history-header">Recent Sign-in Activity</div>
+      <div id="loginHistoryList"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('loginHistoryModal')">Close</button>
+      <button class="btn btn-primary" onclick="downloadLoginHistory()">
+        <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px"><path d="M.5 9.9a.5.5 0 01.5.5v2.5a1 1 0 001 1h12a1 1 0 001-1v-2.5a.5.5 0 011 0v2.5a2 2 0 01-2 2H2a2 2 0 01-2-2v-2.5a.5.5 0 01.5-.5z"/><path d="M7.646 11.854a.5.5 0 00.708 0l3-3a.5.5 0 00-.708-.708L8.5 10.293V1.5a.5.5 0 00-1 0v8.793L5.354 8.146a.5.5 0 10-.708.708l3 3z"/></svg>
+        Export Log
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ██████  API CONNECT MODAL  ██████ -->
+<div class="modal-overlay" id="apiConnectModal" style="display:none" onclick="closeModalOvl(event,'apiConnectModal')">
+  <div class="modal" style="max-width:480px">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="api-connect-modal-icon" id="apiConnectIcon">SC</div>
+        <div>
+          <h3 id="apiConnectTitle">Connect API</h3>
+          <div style="font-size:.76rem;color:var(--slate-500);margin-top:2px" id="apiConnectSubtitle">Configure your API credentials</div>
+        </div>
+      </div>
+      <button class="btn-icon" onclick="closeModal('apiConnectModal')">✕</button>
+    </div>
+    <div class="modal-body" id="apiConnectBody">
+      <!-- Populated by JS -->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('apiConnectModal')">Cancel</button>
+      <button class="btn btn-primary" id="apiConnectBtn" onclick="submitApiConnect()">
+        <span class="btn-text">Connect</span>
+        <span class="btn-loader" style="display:none">
+          <svg class="spinner" viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          Connecting...
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ██████  CHANGE PHOTO MODAL  ██████ -->
+<div class="modal-overlay" id="changePhotoModal" style="display:none" onclick="closeModalOvl(event,'changePhotoModal')">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-header">
+      <h3>Change Profile Photo</h3>
+      <button class="btn-icon" onclick="closeModal('changePhotoModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- Current Preview -->
+      <div class="cp-preview-section">
+        <div class="cp-preview-av" id="cpPreviewAv">SP</div>
+        <div class="cp-preview-info">
+          <div class="cp-preview-name" id="cpPreviewName">S. Patel</div>
+          <div class="cp-preview-role">Legal Officer</div>
+        </div>
+      </div>
+      <!-- Avatar colour picker -->
+      <div class="mform-group">
+        <label>Choose Avatar Colour</label>
+        <div class="cp-color-grid" id="cpColorGrid"></div>
+      </div>
+      <!-- Initials override -->
+      <div class="mform-group">
+        <label>Display Initials</label>
+        <input type="text" id="cpInitialsInput" class="mform-input" maxlength="2" placeholder="e.g. SP" oninput="previewInitials(this.value)" />
+        <div style="font-size:.74rem;color:var(--slate-400);margin-top:4px">Max 2 characters — shown on your avatar</div>
+      </div>
+      <!-- Upload option -->
+      <div class="cp-upload-zone" onclick="document.getElementById('cpFileInput').click()">
+        <svg viewBox="0 0 20 20" fill="currentColor" style="width:20px;height:20px;color:var(--slate-400)"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+        <div style="font-size:.82rem;font-weight:600;color:var(--slate-600)">Upload a photo</div>
+        <div style="font-size:.74rem;color:var(--slate-400)">JPG or PNG · Max 2 MB</div>
+        <input type="file" id="cpFileInput" accept="image/jpeg,image/png" hidden onchange="handlePhotoUpload(event)" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('changePhotoModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProfilePhoto()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Print Overlay -->
+<div id="printOverlay" style="display:none">
+  <div id="printContent"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

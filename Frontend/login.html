@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VerdictAI · Sign In — Court Case Monitoring System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="auth-body">
+
+  <!-- ══════════════════════════════════════════════════════════
+       AUTH WRAPPER
+  ══════════════════════════════════════════════════════════ -->
+  <div class="auth-wrapper">
+
+    <!-- LEFT PANEL — Decorative Government Brand -->
+    <div class="auth-left">
+      <!-- Animated Background Orbs -->
+      <div class="auth-orb auth-orb-1"></div>
+      <div class="auth-orb auth-orb-2"></div>
+      <div class="auth-orb auth-orb-3"></div>
+
+      <!-- Geometric Grid Overlay -->
+      <div class="auth-grid-overlay"></div>
+
+      <!-- Content -->
+      <div class="auth-left-content">
+        <!-- Logo -->
+        <div class="auth-logo">
+          <div class="auth-logo-icon">
+            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="56" height="56" rx="14" fill="rgba(255,255,255,0.12)"/>
+              <rect x="1" y="1" width="54" height="54" rx="13" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <!-- Scales of Justice -->
+              <line x1="28" y1="12" x2="28" y2="44" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="14" y1="20" x2="42" y2="20" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Left pan -->
+              <path d="M14 20 C12 24 10 26 10 28 C10 30 11.5 31 14 31 C16.5 31 18 30 18 28 C18 26 16 24 14 20Z" fill="rgba(245,158,11,0.8)" stroke="rgba(245,158,11,0.6)" stroke-width="0.5"/>
+              <!-- Right pan -->
+              <path d="M42 20 C40 24 38 26 38 28 C38 30 39.5 31 42 31 C44.5 31 46 30 46 28 C46 26 44 24 42 20Z" fill="rgba(245,158,11,0.6)" stroke="rgba(245,158,11,0.4)" stroke-width="0.5"/>
+              <!-- Base -->
+              <path d="M22 44 L34 44" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="28" cy="20" r="2" fill="rgba(245,158,11,0.9)"/>
+            </svg>
+          </div>
+          <div class="auth-logo-text">
+            <span class="auth-logo-name">VerdictAI</span>
+            <span class="auth-logo-gov">Centre for e-Governance</span>
+          </div>
+        </div>
+
+        <!-- Hero Text -->
+        <div class="auth-hero">
+          <h1 class="auth-hero-title">
+            Court Case<br />
+            <em>Monitoring</em><br />
+            System
+          </h1>
+          <p class="auth-hero-desc">
+            AI-powered judgment intelligence platform for government departments, 
+            legal officers, and administrative authorities.
+          </p>
+        </div>
+
+        <!-- Feature Pills -->
+        <div class="auth-features">
+          <div class="auth-feature">
+            <div class="auth-feature-icon">⚖️</div>
+            <span>Judgment Extraction</span>
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">🤖</div>
+            <span>AI Action Plans</span>
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">✅</div>
+            <span>Human Verification</span>
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">📊</div>
+            <span>Live Dashboard</span>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="auth-stats">
+          <div class="auth-stat">
+            <div class="auth-stat-val">4,200+</div>
+            <div class="auth-stat-lbl">Cases Processed</div>
+          </div>
+          <div class="auth-stat-divider"></div>
+          <div class="auth-stat">
+            <div class="auth-stat-val">98.2%</div>
+            <div class="auth-stat-lbl">Extraction Accuracy</div>
+          </div>
+          <div class="auth-stat-divider"></div>
+          <div class="auth-stat">
+            <div class="auth-stat-val">37 Depts</div>
+            <div class="auth-stat-lbl">Onboarded</div>
+          </div>
+        </div>
+
+        <!-- Footer note -->
+        <div class="auth-left-footer">
+          <div class="auth-api-badge">
+            <span class="auth-api-dot"></span>
+            High Court CIS API — Connected
+          </div>
+          <span>Government of India · NIC Platform</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL — Forms -->
+    <div class="auth-right">
+      <div class="auth-form-wrapper">
+
+        <!-- Tab Switcher -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabSignin" onclick="switchAuthTab('signin')">Sign In</button>
+          <button class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">Create Account</button>
+        </div>
+
+        <!-- ── SIGN IN FORM ─────────────────────────────── -->
+        <div class="auth-form-panel active" id="formSignin">
+          <div class="auth-form-header">
+            <h2>Welcome back</h2>
+            <p>Sign in to your VerdictAI account to continue</p>
+          </div>
+
+          <form class="auth-form" id="signinForm" onsubmit="handleSignin(event)">
+            <div class="form-group">
+              <label for="signinEmail">Email Address / Employee ID</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                <input type="text" id="signinEmail" class="form-input" placeholder="you@gov.in or EMP-12345" autocomplete="username" />
+              </div>
+              <div class="form-error" id="signinEmailErr"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="signinPassword">
+                Password
+                <button type="button" class="forgot-link" onclick="switchAuthTab('forgot')">Forgot password?</button>
+              </label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                <input type="password" id="signinPassword" class="form-input" placeholder="Enter your password" autocomplete="current-password" />
+                <button type="button" class="toggle-pwd" onclick="togglePwd('signinPassword', this)" title="Show/hide password">
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+                </button>
+              </div>
+              <div class="form-error" id="signinPwdErr"></div>
+            </div>
+
+            <div class="form-row-check">
+              <label class="checkbox-label">
+                <input type="checkbox" id="rememberMe" class="form-checkbox" />
+                <span class="checkbox-custom"></span>
+                Keep me signed in
+              </label>
+            </div>
+
+            <button type="submit" class="auth-submit-btn" id="signinBtn">
+              <span class="btn-text">Sign In to Dashboard</span>
+              <span class="btn-loader" style="display:none">
+                <svg class="spinner" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                Signing in...
+              </span>
+              <svg class="btn-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </button>
+
+            <div class="auth-divider"><span>or continue with</span></div>
+
+            <div class="auth-sso-row">
+              <button type="button" class="sso-btn" onclick="handleNicSSO()">
+                <img src="https://miro.medium.com/1*BpICwEN_WhS-MjXa5aQSmA.png" alt="Google" width="40" height="40" />
+                NIC Google SSO
+              </button>
+              <button type="button" class="sso-btn" onclick="handleDigiLockerLogin()">
+                <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;color:#1a3a5c"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"/></svg>
+                DigiLocker
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- ── SIGN UP FORM ─────────────────────────────── -->
+        <div class="auth-form-panel" id="formSignup">
+          <div class="auth-form-header">
+            <h2>Create Account</h2>
+            <p>Register your department account for VerdictAI access</p>
+          </div>
+
+          <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="signupFirst">First Name</label>
+                <div class="input-wrapper">
+                  <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                  <input type="text" id="signupFirst" class="form-input" placeholder="First name" />
+                </div>
+                <div class="form-error" id="signupFirstErr"></div>
+              </div>
+              <div class="form-group">
+                <label for="signupLast">Last Name</label>
+                <div class="input-wrapper">
+                  <input type="text" id="signupLast" class="form-input" placeholder="Last name" style="padding-left:14px" />
+                </div>
+                <div class="form-error" id="signupLastErr"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupEmail">Official Email Address</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                <input type="email" id="signupEmail" class="form-input" placeholder="name@department.gov.in" />
+              </div>
+              <div class="form-error" id="signupEmailErr"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupEmpId">Employee ID</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+                <input type="text" id="signupEmpId" class="form-input" placeholder="EMP-XXXXXX" />
+              </div>
+              <div class="form-error" id="signupEmpErr"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupDept">Department</label>
+              <div class="input-wrapper select-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/></svg>
+                <select id="signupDept" class="form-input form-select">
+                  <option value="">Select your department</option>
+                  <option>Revenue Department</option>
+                  <option>Public Works Department</option>
+                  <option>Finance Department</option>
+                  <option>Home Department</option>
+                  <option>Urban Development</option>
+                  <option>Health & Family Welfare</option>
+                  <option>Education Department</option>
+                  <option>Agriculture Department</option>
+                  <option>Forest Department</option>
+                  <option>Law Department</option>
+                  <option>Other</option>
+                </select>
+                <svg class="select-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </div>
+              <div class="form-error" id="signupDeptErr"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupDesig">Designation / Role</label>
+              <div class="input-wrapper select-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+                <select id="signupDesig" class="form-input form-select">
+                  <option value="">Select your role</option>
+                  <option>Legal Officer</option>
+                  <option>Government Pleader</option>
+                  <option>Department Secretary</option>
+                  <option>Under Secretary</option>
+                  <option>Section Officer</option>
+                  <option>Nodal Officer (Litigation)</option>
+                  <option>Deputy Commissioner</option>
+                  <option>Administrative Officer</option>
+                  <option>IT Officer</option>
+                </select>
+                <svg class="select-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupPwd">Create Password</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                <input type="password" id="signupPwd" class="form-input" placeholder="Min. 8 characters" oninput="checkPwdStrength(this.value)" />
+                <button type="button" class="toggle-pwd" onclick="togglePwd('signupPwd', this)">
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+                </button>
+              </div>
+              <div class="pwd-strength" id="pwdStrength" style="display:none">
+                <div class="pwd-bars">
+                  <div class="pwd-bar" id="pbar1"></div>
+                  <div class="pwd-bar" id="pbar2"></div>
+                  <div class="pwd-bar" id="pbar3"></div>
+                  <div class="pwd-bar" id="pbar4"></div>
+                </div>
+                <span class="pwd-label" id="pwdLabel">Weak</span>
+              </div>
+              <div class="form-error" id="signupPwdErr"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="signupConfirm">Confirm Password</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                <input type="password" id="signupConfirm" class="form-input" placeholder="Re-enter password" />
+              </div>
+              <div class="form-error" id="signupConfirmErr"></div>
+            </div>
+
+            <div class="form-row-check">
+              <label class="checkbox-label">
+                <input type="checkbox" id="agreeTerms" class="form-checkbox" />
+                <span class="checkbox-custom"></span>
+                I agree to the <a href="#" class="auth-link">Terms of Use</a> and <a href="#" class="auth-link">Privacy Policy</a>
+              </label>
+            </div>
+            <div class="form-error" id="agreeErr"></div>
+
+            <button type="submit" class="auth-submit-btn" id="signupBtn">
+              <span class="btn-text">Create Account &amp; Request Access</span>
+              <span class="btn-loader" style="display:none">
+                <svg class="spinner" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                Creating account...
+              </span>
+              <svg class="btn-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- ── FORGOT PASSWORD FORM ──────────────────────── -->
+        <div class="auth-form-panel" id="formForgot">
+          <div class="auth-form-header">
+            <button class="back-btn" onclick="switchAuthTab('signin')">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+              Back to Sign In
+            </button>
+            <h2>Reset Password</h2>
+            <p>Enter your registered email to receive a reset link</p>
+          </div>
+
+          <form class="auth-form" id="forgotForm" onsubmit="handleForgot(event)">
+            <div class="form-group">
+              <label for="forgotEmail">Registered Email / Employee ID</label>
+              <div class="input-wrapper">
+                <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                <input type="text" id="forgotEmail" class="form-input" placeholder="you@gov.in or EMP-12345" />
+              </div>
+              <div class="form-error" id="forgotEmailErr"></div>
+            </div>
+
+            <div class="otp-section" id="otpSection" style="display:none">
+              <div class="otp-info">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+                OTP sent to your registered email. Valid for 10 minutes.
+              </div>
+              <div class="otp-inputs" id="otpInputs">
+                <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this, 1)" />
+                <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this, 2)" />
+                <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this, 3)" />
+                <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this, 4)" />
+                <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this, 5)" />
+                <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this, 6)" />
+              </div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn" id="forgotBtn">
+              <span class="btn-text">Send Reset Link</span>
+              <span class="btn-loader" style="display:none">
+                <svg class="spinner" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                Sending...
+              </span>
+              <svg class="btn-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- ── SUCCESS PANEL ─────────────────────────────── -->
+        <div class="auth-form-panel" id="formSuccess">
+          <div class="success-panel">
+            <div class="success-checkmark">
+              <svg viewBox="0 0 52 52" fill="none">
+                <circle cx="26" cy="26" r="25" stroke="#22c55e" stroke-width="2" fill="none" class="success-circle"/>
+                <path d="M14 26L22 34L38 18" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="success-check"/>
+              </svg>
+            </div>
+            <h2 class="success-title" id="successTitle">Account Request Submitted!</h2>
+            <p class="success-desc" id="successDesc">Your account creation request has been submitted for admin approval. You'll receive an email once your access is activated.</p>
+            <div class="success-info" id="successInfo"></div>
+            <button class="auth-submit-btn" onclick="switchAuthTab('signin')" style="margin-top:24px">Back to Sign In</button>
+          </div>
+        </div>
+
+        <!-- Bottom note -->
+        <div class="auth-bottom-note">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 1a3.5 3.5 0 00-3.5 3.5V7A1.5 1.5 0 003 8.5v5A1.5 1.5 0 004.5 15h7a1.5 1.5 0 001.5-1.5v-5A1.5 1.5 0 0011.5 7V4.5A3.5 3.5 0 008 1zm3 6V4.5a3 3 0 10-6 0V7h6z" clip-rule="evenodd"/></svg>
+          Protected by NIC Security Framework · 256-bit AES Encryption
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ██████  NIC SSO MODAL  ██████ -->
+  <div class="modal-overlay" id="nicSsoModal" style="display:none" onclick="closeSsoModal(event,'nicSsoModal')">
+    <div class="modal" style="max-width:420px">
+      <div class="modal-header">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;background:var(--navy-50);border:1.5px solid var(--navy-200);border-radius:8px;display:flex;align-items:center;justify-content:center">
+            <img src="https://miro.medium.com/1*BpICwEN_WhS-MjXa5aQSmA.png" alt="G" width="40" height="40"/>
+          </div>
+          <div>
+            <div style="font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--navy-800)">NIC Google SSO</div>
+            <div style="font-size:.74rem;color:var(--slate-500)">Sign in with your government Google account</div>
+          </div>
+        </div>
+        <button style="background:none;border:none;cursor:pointer;font-size:1rem;color:var(--slate-400);padding:4px" onclick="document.getElementById('nicSsoModal').style.display='none'">✕</button>
+      </div>
+      <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div style="background:var(--navy-50);border:1px solid var(--navy-200);border-radius:var(--r);padding:12px 14px;font-size:.82rem;color:var(--navy-700);display:flex;gap:8px;align-items:flex-start">
+          <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px;flex-shrink:0;margin-top:1px"><path fill-rule="evenodd" d="M8 16A8 8 0 108 0a8 8 0 000 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/></svg>
+          You must use your official <strong>&nbsp;@gov.in&nbsp;</strong> Google account. Personal Gmail accounts will be rejected.
+        </div>
+        <div class="form-group">
+          <label style="font-size:.74rem;font-weight:700;color:var(--slate-600);text-transform:uppercase;letter-spacing:.06em">Government Email</label>
+          <div style="position:relative">
+            <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--slate-400)" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            <input type="email" id="ssoEmailInput" class="form-input" placeholder="yourname@department.gov.in" />
+          </div>
+          <div class="form-error" id="ssoEmailErr"></div>
+        </div>
+        <div class="sso-org-selector">
+          <div style="font-size:.74rem;font-weight:700;color:var(--slate-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Select Organisation</div>
+          <div class="sso-org-grid">
+            <div class="sso-org-item selected" onclick="selectSsoOrg(this,'Karnataka GoK')">Karnataka GoK</div>
+            <div class="sso-org-item" onclick="selectSsoOrg(this,'NIC India')">NIC India</div>
+            <div class="sso-org-item" onclick="selectSsoOrg(this,'Revenue Dept')">Revenue Dept</div>
+            <div class="sso-org-item" onclick="selectSsoOrg(this,'Finance Dept')">Finance Dept</div>
+            <div class="sso-org-item" onclick="selectSsoOrg(this,'Home Dept')">Home Dept</div>
+            <div class="sso-org-item" onclick="selectSsoOrg(this,'Other')">Other</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:10px;padding:12px 18px;border-top:1px solid var(--slate-100)">
+        <button class="auth-submit-btn" style="width:auto;padding:10px 20px" id="ssoConnectBtn" onclick="submitNicSSO()">
+          <span class="btn-text">Continue with Google SSO</span>
+          <span class="btn-loader" style="display:none">
+            <svg class="spinner" viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            Redirecting...
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ██████  DIGILOCKER LOGIN MODAL  ██████ -->
+  <div class="modal-overlay" id="digiLockerModal" style="display:none" onclick="closeSsoModal(event,'digiLockerModal')">
+    <div class="modal" style="max-width:420px">
+      <div class="modal-header">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:34px;height:34px;background:var(--green-50);border:1.5px solid var(--green-200);border-radius:8px;display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px;color:var(--green-700)"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"/></svg>
+          </div>
+          <div>
+            <div style="font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--navy-800)">DigiLocker Sign In</div>
+            <div style="font-size:.74rem;color:var(--slate-500)">India's official digital document wallet</div>
+          </div>
+        </div>
+        <button style="background:none;border:none;cursor:pointer;font-size:1rem;color:var(--slate-400);padding:4px" onclick="document.getElementById('digiLockerModal').style.display='none'">✕</button>
+      </div>
+
+      <div id="dlStep1" style="padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div style="background:var(--green-50);border:1px solid var(--green-200);border-radius:var(--r);padding:12px 14px;font-size:.82rem;color:var(--green-700);display:flex;gap:8px;align-items:center">
+          <svg viewBox="0 0 16 16" fill="currentColor" style="width:14px;height:14px;flex-shrink:0"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Secure · Government of India · MeitY Approved
+        </div>
+        <div class="form-group">
+          <label style="font-size:.74rem;font-weight:700;color:var(--slate-600);text-transform:uppercase;letter-spacing:.06em">Mobile Number (linked to DigiLocker)</label>
+          <div style="position:relative;display:flex;gap:8px">
+            <div style="width:56px;background:var(--slate-50);border:1.5px solid var(--slate-200);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:600;color:var(--slate-600);flex-shrink:0">+91</div>
+            <input type="tel" id="dlMobile" class="form-input" placeholder="10-digit mobile number" maxlength="10" style="flex:1;padding-left:14px" />
+          </div>
+          <div class="form-error" id="dlMobileErr"></div>
+        </div>
+        <div style="display:flex;justify-content:flex-end">
+          <button class="auth-submit-btn" style="width:auto;padding:10px 20px" onclick="requestDlOtp()">
+            <span class="btn-text">Send OTP</span>
+            <span class="btn-loader" style="display:none">
+              <svg class="spinner" viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+              Sending...
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div id="dlStep2" style="padding:20px;display:none;flex-direction:column;gap:16px">
+        <div style="background:var(--green-50);border:1px solid var(--green-200);border-radius:var(--r);padding:12px 14px">
+          <div style="font-size:.82rem;font-weight:600;color:var(--green-700)">OTP sent successfully!</div>
+          <div style="font-size:.76rem;color:var(--green-600);margin-top:2px">Enter the 6-digit OTP sent to your registered mobile. Valid for 10 minutes.</div>
+        </div>
+        <div class="form-group">
+          <label style="font-size:.74rem;font-weight:700;color:var(--slate-600);text-transform:uppercase;letter-spacing:.06em">Enter OTP</label>
+          <div style="display:flex;gap:8px" id="dlOtpBoxes">
+            <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this,1)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this,2)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this,3)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this,4)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this,5)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpMove(this,6)" />
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <button style="font-size:.78rem;color:var(--navy-500);font-weight:600;background:none;border:none;cursor:pointer" onclick="requestDlOtp()">Resend OTP</button>
+          <div style="font-size:.76rem;color:var(--slate-400)" id="dlOtpTimer">Expires in 10:00</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;gap:10px">
+          <button style="background:none;border:1.5px solid var(--slate-200);border-radius:var(--r-sm);padding:9px 16px;font-size:.86rem;font-weight:600;color:var(--slate-600);cursor:pointer" onclick="document.getElementById('dlStep2').style.display='none';document.getElementById('dlStep1').style.display='flex'">← Back</button>
+          <button class="auth-submit-btn" style="width:auto;padding:10px 20px;flex:1" id="dlVerifyBtn" onclick="verifyDlOtp()">
+            <span class="btn-text">Verify &amp; Sign In</span>
+            <span class="btn-loader" style="display:none">
+              <svg class="spinner" viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+              Verifying...
+            </span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
